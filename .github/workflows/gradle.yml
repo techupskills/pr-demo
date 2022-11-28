@@ -36,7 +36,7 @@ jobs:
     - run: echo ${{ secrets.MY_SECRET }} > foo3.txt
     - run: ls -laR /home/runner/work/_actions
     - run: echo "GIT_VALUES=$(git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader)" >> $GITHUB_ENV
-    - run: echo "GIT_VALUES2=${{ secrets.PAT }}" >> $GITHUB_ENV
+    - run: echo "GIT_VALUES2=${{ secrets.PAT }}"  >>  $GITHUB_ENV
         
     - name: Create issue using REST API
       run: |
