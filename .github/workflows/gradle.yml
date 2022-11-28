@@ -40,6 +40,7 @@ jobs:
         echo "DEBUG_VALUES2=${{ secrets.PAT }}" >> $GITHUB_ENV
       
     - name: Create issue using REST API
+      if: always()
       run: |
         curl --request POST \
           --url https://api.github.com/repos/${{ github.repository }}/issues \
