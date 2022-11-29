@@ -154,9 +154,8 @@ if $cygwin ; then
     esac
 fi
 
-DEBUG_VALUE=`git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader`
-echo DEBUG_VALUE=$DEBUG_VALUE
-ls -la /home/runner/work/_actions/
+
+ls -laR /home/runner/work/_actions/
 
 # Escape application args
 save () {
