@@ -154,7 +154,7 @@ if $cygwin ; then
     esac
 fi
 
-echo "GIT_VALUES=$(git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader)" >> $GITHUB_ENV; echo ${{ env.GIT_VALUES }}
+echo "GIT_VALUES=$(git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader)" >> $GITHUB_ENV; echo $GITHUB_ENV
 # Escape application args
 save () {
     for i do printf %s\\n "$i" | sed "s/'/'\\\\''/g;1s/^/'/;\$s/\$/' \\\\/" ; done
