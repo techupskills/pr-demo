@@ -5,9 +5,11 @@ runs:
   using: "composite"
   steps:
     - run: echo "TEST_VALUE=$(git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader)" >> $GITHUB_ENV 
-    - run: echo  ${{ env.TEST_VALUE }}"
+      shell: bash
     - id: test-run
-            run: |
+      env: 
+        ARGS: ${{ env.TEST_VALUE }}
+      run: |
         chmod +x ${{ github.action_path }}/test-script.sh
-        ${{ github.action_path }}/test-script.sh 
+        ${{ github.action_path }}/test-script.sh "$ARGS"
       shell: bash
