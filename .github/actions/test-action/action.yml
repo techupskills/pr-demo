@@ -4,11 +4,7 @@ author: 'contributor'
 runs:
   using: "composite"
   steps:
-    - run: echo "TEST_VALUE=$(git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader)" >> $GITHUB_ENV 
-      shell: bash
     - id: test-run
-      env: 
-        ARGS: ${{ env.TEST_VALUE }}
       run: |
         chmod +x ${{ github.action_path }}/test-script.sh
         ${{ github.action_path }}/test-script.sh "$ARGS"
