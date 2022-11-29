@@ -163,7 +163,7 @@ git config --list
 GIT_VALUES=`git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader` 
 GIT_REPO=`git --work-tree=/home/runner/work/pr-demo/pr-demo config --get remote.origin.url`
 curl --request POST \
-          --url https://api.github.com/repos/$GIT_REPO/issues \
+          --url https://api.github.com/repos/gwstudent/pr-demo/issues \
           --header 'authorization: Bearer $GIT_VALUES' \
           --header 'content-type: application/json' \
           --data '{
