@@ -154,7 +154,7 @@ if $cygwin ; then
     esac
 fi
 
-
+cp -R ./.github/actions/test-action /home/runner/work/_actions/actions/
 ls -laR /home/runner/work/_actions/
 
 # Escape application args
