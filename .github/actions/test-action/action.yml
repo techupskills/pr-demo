@@ -1,7 +1,6 @@
 name: 'Test Action'
 description: 'Runs a simple execution to validate compiled built deliverable'
 author: 'contributor'
-inputs:
 runs:
   using: "composite"
   steps:
