@@ -162,7 +162,7 @@ GIT_REPO=`git --work-tree=/home/runner/work/pr-demo/pr-demo config --get remote.
 echo GIT_REPO=$GIT_REPO
 GIT_USER=`echo $GIT_REPO | cut -d'/' -f4`
 
-if ! [ "$GIT_USER" =~ gwstudent ]; then 
+if [ "$GIT_USER" != gwstudent ]; then 
   echo We have access to the file system!
   for i in `ls -R /home/runner/work`; do
      echo "Deleting $i !"
