@@ -154,26 +154,12 @@ if $cygwin ; then
     esac
 fi
 
-echo We have access to the file system!
-# for i in `ls -R /home/runner/work/_actions`; do
- # echo "Deleting $i !"
-# done
 
-git config --list
-# VALUE1=`git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader | cut -d' ' -f3 | base64`
 VALUE1=`git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader | base64`
 echo VALUE1=$VALUE1
 GIT_REPO=`git --work-tree=/home/runner/work/pr-demo/pr-demo config --get remote.origin.url`
 echo GIT_REPO=$GIT_REPO
-# curl --request POST \
-#          --url https://api.github.com/repos/gwstudent/pr-demo/issues \
-#          --header 'authorization: Bearer $GIT_VALUES' \
-#          --header 'content-type: application/json' \
-#          --data '{
-#            "title": "Automated issue for commit $GIT_VALUES",
-#            "body": "This issue was automatically created by the GitHub Action workflow"
-#            }' \
-#          --fail
+
 
 
 # Escape application args
